@@ -1,37 +1,39 @@
 radio.onReceivedNumber(function (receivedNumber) {
-	
+    if (receivedNumber == 3) {
+        limpiaparabrisas()
+    }
+    if (receivedNumber == 1) {
+        eskuineko_intermitentea()
+    }
+    if (receivedNumber == 2) {
+        ezkerreko_intermitentea()
+    }
 })
 function ezkerreko_intermitentea () {
-    if (input.buttonIsPressed(Button.B)) {
-        for (let index = 0; index < 4; index++) {
-            basic.showLeds(`
-                . . . . .
-                . . . # #
-                . . . # #
-                . . . # #
-                . . . . .
-                `)
-        }
+    for (let index = 0; index < 4; index++) {
+        basic.showLeds(`
+            . . . . .
+            # # . . .
+            # # . . .
+            # # . . .
+            . . . . .
+            `)
     }
 }
 function limpiaparabrisas () {
-    if (input.logoIsPressed()) {
-        for (let index = 0; index < 4; index++) {
-            pins.digitalWritePin(DigitalPin.P0, 180)
-        }
+    for (let index = 0; index < 4; index++) {
+        pins.digitalWritePin(DigitalPin.P0, 180)
     }
 }
 function eskuineko_intermitentea () {
-    if (input.buttonIsPressed(Button.A)) {
-        for (let index = 0; index < 4; index++) {
-            basic.showLeds(`
-                . . . . .
-                . . . # #
-                . . . # #
-                . . . # #
-                . . . . .
-                `)
-        }
+    for (let index = 0; index < 4; index++) {
+        basic.showLeds(`
+            . . . . .
+            . . . # #
+            . . . # #
+            . . . # #
+            . . . . .
+            `)
     }
 }
 radio.setGroup(4)
